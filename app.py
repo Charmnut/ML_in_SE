@@ -24,11 +24,11 @@ def main_plot():
     number = int(session['form']['number'])
     method = session['form']['method']
     score_name = session['form']['score']
-    if session['form']['pearson'] != '':
+    if session['form'].__contains__('pearson'):
         fs_function.append(session['form']['pearson'])
-    if session['form']['fisher'] != '':
+    if session['form'].__contains__('fisher'):
         fs_function.append(session['form']['fisher'])
-    if session['form']['greedy'] != '':
+    if session['form'].__contains__('greedy'):
         fs_function.append(session['form']['greedy'])
     img = run_main(method, fs_function, score_name, number)
     return send_file(img, mimetype='image/png', cache_timeout=0)

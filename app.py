@@ -5,7 +5,6 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
 
 
-
 @app.route('/', methods=["POST"])
 def return_page():
     session['form'] = request.form

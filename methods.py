@@ -14,6 +14,7 @@ from sklearn.linear_model import LogisticRegression
 
 
 def run_method(method, X, y, n_clfs=3, fs_functions=None, score_name="auc"):
+    plt.clf()
     if method == "forward_selection":
         """
         Forward selection using weighted svm w.r.t greedy, pearson and fisher

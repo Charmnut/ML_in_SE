@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Typical Climate</title>
+    </head>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+    <body>
+
+{#        <div class="row">#}
+{#            <div id="fs" class="col">选择特征选择方法</div>#}
+{#            <div id="m" class="col"><label for="m_choices">选择训练方法</label></div>#}
+{#            <div id="n" class="col">选择分类器个数</div>#}
+{#            <div id="s" class="col">评估指标</div>#}
+{#        </div>#}
+<form action="" method="post">
+        <div class="row">
+            <div id="fs_choices" class="col">
+                <div id="fs" class="col">选择特征选择方法</div>
+                <div id="fs_choices" class="form-check" >
+                      <label class="form-check-label">
+                        <input name="pearson" type="checkbox" class="form-check-input" value="pearson">Pearson
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input name="fisher" type="checkbox" class="form-check-input" value="fisher">Fisher
+                      </label>
+                    </div>
+                    <div class="form-check disabled">
+                      <label class="form-check-label">
+                        <input name="greedy" type="checkbox" class="form-check-input" value="greedy">Greedy
+                      </label>
+                    </div>
+            </div>
+            <div class="col">
+                 <div class="form-group">
+                  <label for="m_choices">选择训练方法:</label>
+                  <select name="method" class="form-control" id="m_choices">
+                    <option value="forward_selection">加权向量机</option>
+                    <option value="ensemble_svm">集成SVM</option>
+                  </select>
+                 </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                  <label for="n_clfs">输入分类器个数:</label>
+                  <input name="number" type="text" class="form-control" id="n_clfs" value="{{ request.form.number }}">
+                </div>
+            </div>
+            <div id="s_choices" class="col">
+                <div class="form-group">
+                  <label for="s_choices">选择评估指标:</label>
+                  <select name="score" class="form-control" id="s_choices">
+                    <option name="auc" value="auc">AUC</option>
+                    <option name="gmeans" value="gmeans">Gmeans</option>
+                  </select>
+                 </div>
+            </div>
+            </div>
+        </div>
+    <div id="confirm">
+        <button value="login" type="submit" class="btn btn-success offset-11">确定</button>
+    </div>
+    </form>
+
+
+
+
+
+    </body>
+</html>

@@ -8,7 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="../static/css/analysis.css" rel="stylesheet">
 
   </head>
   <body>
@@ -71,6 +71,16 @@
                   </select>
                  </div>
             </div>
+            <div class="form-group">
+               <label for="num_choices">选择数据集:</label>
+               <select name="dataset" class="form-control" id="num_choices">
+                 <option value="ant">ant.csv</option>
+                 <option value="KC3">KC3.arff</option>
+                 <option value="MC1">MC1.arff</option>
+                 <option value="PC2">PC2.arff</option>
+                 <option value="PC4">PC4.arff</option>
+               </select>
+            </div>
 
             <div id="confirm">
                 <button value="login" type="submit" class="btn btn-success offset-10">确定</button>
@@ -93,42 +103,23 @@
               <div style='max-height: 400px; overflow-y: auto; margin-bottom: 30px;'>
 
                 <!--可以有多个thumbnail， 每一个里面包括一张图片和一个标题和一个pre标签（专门用来输出命令行）-->
-                <div class="thumbnail">
-                   <img src="{{ url_for('main_plot') }}" alt="Image">
-                  <div class="caption">
-                    <h4>Thumbnail1</h4>
 
-                    <!--里面塞的内容可以自动换行（自动识别‘\n’）-->
-                    <pre>
-随机森林详细分析
-可释方差值: 0.469380
-平均绝对误差: 0.391643
-均方误差: 0.645235
-R方值，确定系数: 0.465172
-
-线性回归详细分析
-可释方差值: -1.788965
-平均绝对误差: 0.798229
-均方误差: 3.453739
-R方值，确定系数: -1.862768
-
-梯度树增加详细分析
-可释方差值: 0.576836
-平均绝对误差: 0.438971
-均方误差: 0.528375
-R方值，确定系数: 0.562035
-                      </pre>
-                    </div>
+                    {% if submit %}
+                  <div class="thumbnail">
+                        <img src="{{ url_for('main_plot') }}" alt="Image">
                   </div>
+                  <!--控制整个输出台最大高度的div结尾-->
+                    {% endif %}
+
+<!--                  <div class="caption">-->
+<!--                    <h4>训练过程</h4>-->
+
+<!--                    &lt;!&ndash;里面塞的内容可以自动换行（自动识别‘\n’）&ndash;&gt;-->
+<!--                    <pre>-->
+<!--                    </pre>-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <!--thumbnail结尾-->
-
-                </div>
-                <!--控制整个输出台最大高度的div结尾-->
-
-<!--                <p>-->
-<!--                   <a href="#" class="btn btn-primary" role="button">Button</a>-->
-<!--                   <a href="#" class="btn btn-default" role="button">Button</a>-->
-<!--                </p>-->
 
               </div>
             </div>

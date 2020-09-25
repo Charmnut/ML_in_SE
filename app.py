@@ -8,13 +8,13 @@ app.config['SECRET_KEY'] = '123456'
 @app.route('/', methods=["POST"])
 def return_page():
     session['form'] = request.form
-    return render_template('result.html')
+    return render_template('main1.html',submit=True)
 
 
 @app.route('/')
 def main():
     """Entry point; the view for the main page"""
-    return render_template('main.html')
+    return render_template('main1.html')
 
 
 @app.route('/main.png')

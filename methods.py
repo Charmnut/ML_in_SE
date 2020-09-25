@@ -100,4 +100,5 @@ def ensemble_forward_pass(clfs, X, y, n_clfs=None):
         auc_scores[i] = np.mean(scores)
     for i in range(n_clfs):
         print("Score: %.3f, n_clfs: %d" % (auc_scores[i], i + 1))
+        
     return auc_scores, np.arange(n_clfs) + 1

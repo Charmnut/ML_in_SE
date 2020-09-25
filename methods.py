@@ -64,7 +64,7 @@ def run_method(method, X, y, n_clfs=3, fs_functions=None, score_name="auc"):
         clfs = [SVC(probability=True), MultinomialNB(alpha=0.001),
                 BernoulliNB(alpha=0.001), RandomForestClassifier(n_estimators=20),
                 GradientBoostingClassifier(n_estimators=300),
-                SGDClassifier(alpha=.0001, loss='log', n_iter=50,
+                SGDClassifier(alpha=.0001, loss='log',
                               penalty="elasticnet"), LogisticRegression(penalty='l2')]
 
         (scores, x_values) = ensemble_forward_pass(clfs, X, y, n_clfs=n_clfs)
@@ -97,8 +97,7 @@ def ensemble_forward_pass(clfs, X, y, n_clfs=None):
 
             scores += [metrics.roc_auc_score(y_test, y_pred)]
 
-        auc_scores[i] = np.mean(scores) + 0.1
-    auc_scores.sort()
+        auc_scores[i] = np.mean(scores)
     for i in range(n_clfs):
         print("Score: %.3f, n_clfs: %d" % (auc_scores[i], i + 1))
     return auc_scores, np.arange(n_clfs) + 1

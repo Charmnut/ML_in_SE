@@ -80,7 +80,6 @@ def compute_feature_curve(clf, X, y, ft_ranks, step_size=1, score_name="auc"):
                                         cv=10, scoring=score_function))
 
         selected_features += [ft_list]
-        score = score +0.1
         scores += [score]
 
         print('%s score: %.3f with %s features...' % (score_name, score, ft_list))
@@ -118,7 +117,6 @@ def greedy_selection(clf, X, y, score_name="auc"):
             if score > maximum:
                 maximum = score
                 best_feature = j
-        score = score +0.1
         scores += [score]
         selected_features += [best_feature]
 

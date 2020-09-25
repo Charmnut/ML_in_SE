@@ -22,6 +22,7 @@ def main_plot():
     """The view for rendering the scatter chart"""
     fs_function = []
     number = int(session['form']['number'])
+    dataset_name = session['form']['dataset']
     method = session['form']['method']
     score_name = session['form']['score']
     if session['form'].__contains__('pearson'):
@@ -30,7 +31,7 @@ def main_plot():
         fs_function.append(session['form']['fisher'])
     if session['form'].__contains__('greedy'):
         fs_function.append(session['form']['greedy'])
-    img = run_main(method, fs_function, score_name, number)
+    img = run_main(method, fs_function, score_name, number,dataset_name)
     return send_file(img, mimetype='image/png', cache_timeout=0)
 
 

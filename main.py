@@ -9,7 +9,7 @@ import pylab as pl
 from io import BytesIO
 
 
-def run_main(method, fs_functions,  score_name, n_clfs=5, dataset_name="ant"):
+def run_main(method, fs_functions,  score_name, n_clfs=5, dataset_name="PC4"):
 
     print("\nDATASET: %s\nMETHOD: %s\n" % (dataset_name, method))
     np.random.seed(1)

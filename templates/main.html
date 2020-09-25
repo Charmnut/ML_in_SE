@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Typical Climate</title>
+        <title>软件缺陷预测</title>
     </head>
     <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../static/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
@@ -50,6 +50,18 @@
                   <input name="number" type="text" class="form-control" id="n_clfs" value="{{ request.form.number }}">
                 </div>
             </div>
+            <div class="col">
+              <div class="form-group">
+               <label for="num_choices">选择数据集:</label>
+               <select name="dataset" class="form-control" id="num_choices">
+                 <option value="ant">ant.csv</option>
+                 <option value="KC3">KC3.arff</option>
+                 <option value="MC1">MC1.arff</option>
+                 <option value="PC2">PC2.arff</option>
+                 <option value="PC4">PC4.arff</option>
+               </select>
+              </div>
+         </div>
             <div id="s_choices" class="col">
                 <div class="form-group">
                   <label for="s_choices">选择评估指标:</label>

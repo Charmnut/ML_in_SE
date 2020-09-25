@@ -1,65 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Typical Climate</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>软件缺陷预测</title>
+    </head>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+    <body>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/analysis.css" rel="stylesheet" type="text/css">
-</head>
-
-<!--    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
-<!--    <link href="../static/css/bootstrap-grid.css" rel="stylesheet" type="text/css">-->
-
-<body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">缺陷预测</a>
-        </div>
-      </div><!-- /.container-fluid -->
-    </nav>
-
-    <div class="select-form row-cols-6" >
-        <form action="" method="post">
-            <div style="overflow: auto">
-                <label id="fs">选择特征选择方法</label>
-                <div id="fs_choices" class="form-check float-left" >
-                    <label class="form-check-label">
+{#        <div class="row">#}
+{#            <div id="fs" class="col">选择特征选择方法</div>#}
+{#            <div id="m" class="col"><label for="m_choices">选择训练方法</label></div>#}
+{#            <div id="n" class="col">选择分类器个数</div>#}
+{#            <div id="s" class="col">评估指标</div>#}
+{#        </div>#}
+<form action="" method="post">
+        <div class="row">
+            <div id="fs_choices" class="col">
+                <div id="fs" class="col">选择特征选择方法</div>
+                <div id="fs_choices" class="form-check" >
+                      <label class="form-check-label">
                         <input name="pearson" type="checkbox" class="form-check-input" value="pearson">Pearson
-                    </label>
-
-                    <label class="form-check-label">
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
                         <input name="fisher" type="checkbox" class="form-check-input" value="fisher">Fisher
-                    </label>
-
-                    <label class="form-check-label">
+                      </label>
+                    </div>
+                    <div class="form-check disabled">
+                      <label class="form-check-label">
                         <input name="greedy" type="checkbox" class="form-check-input" value="greedy">Greedy
-                    </label>
-                </div>
+                      </label>
+                    </div>
             </div>
-
-            <div class="form-group">
-                <label for="m_choices">选择训练方法:</label>
-                <select name="method" class="form-control" id="m_choices">
+            <div class="col">
+                 <div class="form-group">
+                  <label for="m_choices">选择训练方法:</label>
+                  <select name="method" class="form-control" id="m_choices">
                     <option value="forward_selection">加权向量机</option>
                     <option value="ensemble_svm">集成SVM</option>
-                </select>
+                    <option value="ensemble_heter">平均概率集合（APE）</option>
+                  </select>
+                 </div>
             </div>
-
-            <div class="form-group">
-                 <label for="n_clfs">输入分类器个数:</label>
-                 <input name="number" type="text" class="form-control" id="n_clfs" value="{{ request.form.number }}">
+            <div class="col">
+                <div class="form-group">
+                  <label for="n_clfs">输入分类器个数:</label>
+                  <input name="number" type="text" class="form-control" id="n_clfs" value="{{ request.form.number }}">
+                </div>
             </div>
-
-            <div>
+            <div class="col">
+              <div class="form-group">
+               <label for="num_choices">选择数据集:</label>
+               <select name="dataset" class="form-control" id="num_choices">
+                 <option value="ant">ant.csv</option>
+                 <option value="KC3">KC3.arff</option>
+                 <option value="MC1">MC1.arff</option>
+                 <option value="PC2">PC2.arff</option>
+                 <option value="PC4">PC4.arff</option>
+               </select>
+              </div>
+         </div>
+            <div id="s_choices" class="col">
                 <div class="form-group">
                   <label for="s_choices">选择评估指标:</label>
                   <select name="score" class="form-control" id="s_choices">
@@ -68,28 +71,16 @@
                   </select>
                  </div>
             </div>
-
-            <div id="confirm">
-                <button value="login" type="submit" class="btn btn-success offset-10">确定</button>
             </div>
-        </form>
-    </div>
-
-
-    {% if submit %}
-    <div class="row-cols-6">
-        <h4 style="text-align: center">结果图：</h4>
-        <div style="text-align: center" id="element2">
-            <img src="{{ url_for('main_plot') }}" alt="Image">
         </div>
+    <div id="confirm">
+        <button value="login" type="submit" class="btn btn-success offset-11">确定</button>
     </div>
-    {% else %}
+    </form>
 
-    {% endif %}
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-</body>
 
+
+
+    </body>
 </html>

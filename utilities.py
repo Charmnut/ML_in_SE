@@ -117,7 +117,6 @@ def greedy_selection(clf, X, y, score_name="auc"):
             if score > maximum:
                 maximum = score
                 best_feature = j
-
         scores += [score]
         selected_features += [best_feature]
 
